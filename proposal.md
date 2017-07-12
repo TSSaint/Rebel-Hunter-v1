@@ -7,13 +7,13 @@ Darth Vader/Star Wars based mini-game using HTML/CSS/JQuery
 
 ## What is Rebel Hunter?
 
-In this side scroller, Darth Vader faces off against a series of rebel scum and blaster bolts. Using the lightsaber, incoming enemies must be destroyed with key "1". Blaster bolts should be deflected with key "Spacebar". Several new force powers may be unlocked if the player is particularly effective.
+In this side scroller, Darth Vader faces off against a series of rebel scum and blaster bolts. Using the lightsaber, incoming enemies must be destroyed with key "1". Blaster bolts should be deflected with key "Spacebar". Several new force powers may be unlocked if the player is particularly effective. 
 
 ## Wireframe
 
-![](./Rebel Hunter v1/REBEL HUNTER WIREFRAME-01.png)
-![](./Rebel-Hunter-v1/REBELHUNTERWIREFRAME02.png)
-![](./Rebel-Hunter-v1/REBELHUNTERWIREFRAME03.png)
+![](./rebelhunterv1/rh1.png)
+![](./rebelhunterv1/rh2.png)
+![](./rebelhunterv1/rh3.png)
 
 ## Initial thoughts on game structure
 

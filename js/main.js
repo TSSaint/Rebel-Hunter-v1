@@ -29,67 +29,103 @@
 //   |                                 |                    [.]b       //
 //___|_________________________________|____________________[ ]________//
 
-const game = {
-  score: 0,
-  enemies: [],
-  start: function () {
-
-  },
-  die: function () {
-
-  },
-};
-
-const enemy = {
-  health: 100,
-  hitbox: {
+//constructor ENEMY
+const Enemy = function () { //each one of these enemy has properties holding health,
+  this.health = 100;        //size of hitbox, and position
+  this.hitbox = {
     width: 100,
     height: 100
-  },
-  position: {
+  };
+  this.position = {
     x: null,
     y: null
-  }
+  };
+};
+//end
+
+Enemy.prototype.shoot = function () {
+
 };
 
-const player = { //holds Darth Vader
-  health: 100,
-  hitbox: {
+//constructor PLAYER
+const Player = function () { //holds instance of Darth Vader
+  this.health = 100;
+  this.hitbox = {
     width: 100,
     height: 100
-  },
-  position: {
+  };
+  this.position = {
     x: null,
     y: null
-  },
-  addListeners: function () {
-    $(document).keypress(function (event) { //whenever user clicks these, do it
-      if (event.which === 32) {
-        //spacebar
-        this.block();
-      } else if (event.which === 49) {
-        //1
-        this.attack();
-      } else if (event.which === 37) {
-        //left
-        this.moveLeft();
-      } else if (event.which === 38) {
-        //right
-        this.moveRight();
-      }
-    });
-  },
-  attack: function () {
-
-  },
-  block: function () {
-
-  },
-  moveLeft: function () {
-
-  },
-  moveRight: function () {
-
-  }
+  };
 };
 
+Player.prototype.addListeners = function () {
+  $(document).keypress(function (event) { //whenever user clicks these, do it
+    if (event.which === 32) {
+      //spacebar
+      this.block();
+    } else if (event.which === 49) {
+      //1
+      this.attack();
+    } else if (event.which === 37) {
+      //left
+      this.moveLeft();
+    } else if (event.which === 38) {
+      //right
+      this.moveRight();
+    }
+  });
+};
+
+Player.prototype.attack = function () {
+
+};
+
+Player.prototype.block = function () {
+
+};
+
+Player.prototype.moveLeft = function () {
+
+};
+
+Player.prototype.moveRight = function () {
+
+};
+
+//end
+
+//constructor GAME
+const Game = function () {
+  this.score = 0;     //add this. -- and = Num;
+  this.enemies = [];  //add this. -- and = [];
+  this.player = new Player();
+};
+
+Game.prototype.addListeners = function () {
+  $('.action-begin').click(function (event) {
+    /* Act on the event */
+    this.start(); //doesn't refer to Game constructor. instead, refers to the button
+  }).bind(this); //makes refer to Game!!!!!!!111111!!
+};
+
+Game.prototype.start = function () { //turn into X.prototype.FUNCTION = function () {};
+  var enemy = new Enemy(); //creates new bad guys!!!!
+  this.enemies.push(enemy); //looks at Game constructor, and calls 1 new bad guy
+};
+
+Game.prototype.die = function () {
+
+};
+
+const game = new Game();
+game.addListeners();
+//end
+console.log('use the force');
+
+//collision detection
+// if (player.position = {100px, 100px}) {
+
+// }
+$('')

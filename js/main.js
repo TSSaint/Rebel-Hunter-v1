@@ -79,19 +79,19 @@ Player.prototype.addListeners = function () {
 };
 
 Player.prototype.attack = function () {
-
+  // $('player').
 };
 
 Player.prototype.block = function () {
-
+  // $('player').
 };
 
 Player.prototype.moveLeft = function () {
-
+  // $('player').
 };
 
 Player.prototype.moveRight = function () {
-
+  // $('player').
 };
 
 //end
@@ -123,6 +123,40 @@ const game = new Game();
 game.addListeners();
 //end
 console.log('use the force');
+
+//background
+
+//movement of PLAYER && ATTACKS
+//can move RIGHT AND LEFT
+//can BLOCK
+//can ATTACK
+//advanced goals: can THROW LIGHTSABER "3" ---> KILLS ALL ENEMIES ON FIELD in RADIUS of BLADE
+              //: can FORCE CRUSH "5" ---> KILLS ALL ENEMIES/LASERBEAMS ON FIELD, stops spawns for 5 seconds
+              //  (cont.) and get points for each spawn blocked,
+
+//movement of ENEMY
+var enemy = 900;
+setInterval (() => {
+  enemy -= 3;
+  $('.enemy').css('left', `${enemy}px`);
+}, 10)
+
+// if ($'.enemy'.pos = 800) {
+//   console.log('you get hurt');
+//   REMOVE SCORE
+// };
+
+//movement of BLASTERBOLT
+var bolt = 900;
+setInterval (() => {
+  bolt -= 3;
+  $('.laserBeam').css('left', `${bolt}px`);
+}, 3)
+
+// if ($'.laserbeam'.pos = 800) {
+//   console.log('you get hurt');
+//   REMOVE SCORE
+// };
 
 //collision detection
 // if (player.position = {100px, 100px})

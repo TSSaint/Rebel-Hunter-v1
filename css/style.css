@@ -1,10 +1,16 @@
+* {
+  margin: auto;
+}
+
 #game {
   background-color: black;
 }
 
 #start-screen {
-  background: url('./RebelHunterv1/startbg.jpg');
-  background-size: 1200px;
+  background: url('../RebelHunterv1/startbg.jpg');
+  background-repeat: no-repeat;
+  background-size: 1260px;
+  height: 900px;
 }
 
 #game-name {
@@ -17,7 +23,8 @@
 }
 
 #headerblock {
-  background-color: red;
+  background-color: black;
+  background-size: 1260px;
 }
 
 #prompt {
@@ -26,7 +33,7 @@
   font-variant:
   letter-spacing: -.05em;
   color: white;
-  padding: 0px 0px 0px 30px;
+  padding: 30px 0px 0px 30px;
 }
 
 #buttonspace {
@@ -50,12 +57,12 @@
 
 }
 
-#gameplay {
+/*#gameplay {
   background-color: ;
   height: 500px;
   width: 1200px;
   /*background-image: url("");*/
-}
+}*/
 
 #darthvader {
   height: 300px;
@@ -77,15 +84,55 @@
 
 
 #end-screen {
+  font-family: Futura, sans-serif;
+  color: white;
+  background: url('../RebelHunterv1/startbg.jpg');
+}
 
+#end-note {
+  font-family: Futura, sans-serif;
+  color: white;
+  padding: 0px 0px 0px 30px;
 }
 
 /*agents*/
+.gameplay {
+  width: 1260px;
+  height: none;
+  border: 1px solid black;
+  display: inline-block;
+  overflow: hidden; /* will contain if #first is longer than #second */
+  background-image: url(../RebelHunterv1/startbg.jpg);
+  box-sizing: ;
+}
+
 .player {
-  background-color: red;
+  background-color: none;
   width: 177px;
   height: 238px;
-  position: relative;
-  margin: 264px 0px 0px 30px;
+  float: left;
+  z-index: 999;
+  margin: 0px 0px 0px 30px;
+}
+
+.enemy {
+  background-color: none;
+  width: 120px;
+  height: 190px;
+  float: right;
+  position: absolute;
+  left: 900px;
+  margin: 48px 20px 0px 30px;
+  padding-top:
+}
+
+.laserBeam {
+  background-color: white;
+  width: 100px;
+  height: 5px;
+  float: right;
+  z-index: 1;
+  position: absolute;
+  margin: 75px 0px 0px 700px;
   padding-top:
 }

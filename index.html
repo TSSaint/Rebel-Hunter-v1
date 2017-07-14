@@ -16,20 +16,27 @@
             <p id="prompt">THE REBELS ARE ATTEMPTING TO ESCAPE FROM THE CORRIDOR. ELIMINATE THEM.</p>
             <!-- <p id="prompt">ELIMINATE THEM.</p> -->
               <div id="buttonspace">
-            <button class="action-begin" id="gamebuttons">START</button>
+            <button class="action-begin" id="gamebuttons">start</button>
               </div>
+              <audio>
+                <source src="horse.mp3" type="audio/mpeg">
+              </audio>
         </section>
-        <section id="gameplay">
+        <section class="gameplay">
           <div id="darthVader">
-            <img class ="player" src="RebelHunterv1/playerVader.png">
-          <div>
-          <div id="rebelSolder">
+            <img class="player" src="RebelHunterv1/playerVader.png">
+          </div>
+          <div id="rebelSoldier">
+            <img class="enemy" src="RebelHunterv1/enemyRebel.png">
+          </div>
+          <div id="laserBeam">
+            <img class="laserBeam" src="RebelHunterv1/blasterbolt.jpg">
           </div>
         </section>
           <!-- game goes here -->
         <section id="end-screen">
             <h1 id="scoring">SCORE: <span id="score"></span></h1>
-            <p id="endscreen">Impressive. Most impressive.</p>
+            <!-- <p id="end-note">Impressive. Most impressive.</p> -->
             <div id="buttonspace">
                 <button class="action-again" id="gamebuttons">AGAIN</button>
                 <button class="action-main" id="gamebuttons">MAIN</button>

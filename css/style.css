@@ -10,7 +10,7 @@
   background: url('../RebelHunterv1/startbg.jpg');
   background-repeat: no-repeat;
   background-size: 1260px;
-  height: 900px;
+  height: 1000px;
 }
 
 #game-name {
@@ -86,7 +86,7 @@
 #end-screen {
   font-family: Futura, sans-serif;
   color: white;
-  background: url('../RebelHunterv1/startbg.jpg');
+  background: url('../RebelHunterv1/endgame.png');
 }
 
 #end-note {
@@ -98,21 +98,22 @@
 /*agents*/
 .gameplay {
   width: 1260px;
-  height: none;
+  height: 500px;
   border: 1px solid black;
   display: inline-block;
   overflow: hidden; /* will contain if #first is longer than #second */
   background-image: url(../RebelHunterv1/startbg.jpg);
-  box-sizing: ;
 }
 
 .player {
   background-color: none;
   width: 177px;
   height: 238px;
-  float: left;
+  position: absolute;
   z-index: 999;
   margin: 0px 0px 0px 30px;
+  /*testing*/
+  border: 2px solid white;
 }
 
 .enemy {
@@ -122,8 +123,9 @@
   float: right;
   position: absolute;
   left: 900px;
-  margin: 48px 20px 0px 30px;
-  padding-top:
+  margin: 50px 20px 0px 30px;
+  /*testing*/
+  border: 2px solid yellow;
 }
 
 .laserBeam {
@@ -134,5 +136,6 @@
   z-index: 1;
   position: absolute;
   margin: 75px 0px 0px 700px;
-  padding-top:
+  /*testing*/
+  border: 2px solid blue;
 }

@@ -135,11 +135,16 @@ console.log('use the force');
               //  (cont.) and get points for each spawn blocked,
 
 //movement of ENEMY
+const player = 160;
+
 var enemy = 900;
 setInterval (() => {
-  enemy -= 3;
+  enemy -= 10;
   $('.enemy').css('left', `${enemy}px`);
-}, 10)
+  if (enemy === player) {
+  alert('Do something here');
+  }
+}, 10);
 
 // if ($'.enemy'.pos = 800) {
 //   console.log('you get hurt');
@@ -149,9 +154,20 @@ setInterval (() => {
 //movement of BLASTERBOLT
 var bolt = 900;
 setInterval (() => {
-  bolt -= 3;
+  bolt -= 15;
   $('.laserBeam').css('left', `${bolt}px`);
-}, 3)
+}, 2)
+
+// if bolt position
+
+// const playerPos = 270 + 'px';
+
+// let enemyPos;
+
+// //
+// if (enemyPos = playerPos) {
+//   console.log('Do something here');
+// }
 
 // if ($'.laserbeam'.pos = 800) {
 //   console.log('you get hurt');
@@ -162,8 +178,9 @@ setInterval (() => {
 // if (player.position = {100px, 100px})
 // if (enemy.position - {100px, 100px})
 // COLLISION!!! ->//   ENEMY DIE && ADD TO SCORE
-                  //or ENEMIE DIE && REMOVE HEALTH, ADD TO SCORE
+                  //or ENEMY DIE && REMOVE HEALTH, ADD TO SCORE
                   //or DEFLECT && ADD TO SCORE
                   //or PLAYER DIE
+                  //GAME WIN AND DISPLAY FINAL SCREEN
 
 // document.querySelector('#game').innerHTML += `<div></div>`;

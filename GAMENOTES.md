@@ -4,8 +4,6 @@ GAMENOTES.md
 
 Ari's Notes:
 
-Notes:
-
 //
 Randomly spawning:
 
@@ -53,7 +51,7 @@ GET THE GAME LOGIC WORKING
 
 GOALS:
 	*Not so important, but MVP
-ALERT (you lose, score, just that)
+ALERT (you lose, score, just that) **
 HAVE A MENU ***
 END SCREEN **
 HAVE OTHER TYPES OF “MEN” *****
@@ -62,3 +60,14 @@ SOUND **
 	
 COMMIT OFTEN/USE MESSAGES THAT MAKE SENSE
 //
+
+//
+Using jquery TO: detect the keys
+- when hit 1, looks @ player position, looks @ 100px in front of player, loop through all enemies to see if that hitspace (light saber) is inside the enemy's hitbox - if match, kill enemy, add score. Remove enemies in array (maybe have them stay dead)
+
+- use CSS/JS to move the characters around
+
+X_X --- hitbox, block instances of <==, 1 instances of rebels  bolts= <==  <== <==  rebels x 5 <<<<
+
+7/13/2017
+X0___VADER___10 <10 (collide) _20(REBEL)___30(REBEL)___40(REBEL__....100

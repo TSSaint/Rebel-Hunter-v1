@@ -116,7 +116,7 @@ Game.prototype.start = function () { //turn into X.prototype.FUNCTION = function
 };
 
 Game.prototype.die = function () {
-
+  this.player.remove(Player)
 };
 
 const game = new Game();
@@ -125,7 +125,11 @@ game.addListeners();
 console.log('use the force');
 
 //collision detection
-// if (player.position = {100px, 100px}) {
+// if (player.position = {100px, 100px})
+// if (enemy.position - {100px, 100px})
+// COLLISION!!! ->//   ENEMY DIE && ADD TO SCORE
+                  //or ENEMIE DIE && REMOVE HEALTH, ADD TO SCORE
+                  //or DEFLECT && ADD TO SCORE
+                  //or PLAYER DIE
 
-// }
-$('')
+// document.querySelector('#game').innerHTML += `<div></div>`;

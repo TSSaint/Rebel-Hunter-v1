@@ -1,6 +1,10 @@
 #game {
   background-color: black;
+}
 
+#start-screen {
+  background: url('./RebelHunterv1/startbg.jpg');
+  background-size: 1200px;
 }
 
 #game-name {
@@ -8,24 +12,80 @@
   font-size: 50px;
   letter-spacing: .20em;
   color: white;
+  margin-top: 0px;
+  padding: 30px 0px 30px 30px;
+}
 
+#headerblock {
+  background-color: red;
 }
 
 #prompt {
   font-family: Futura, sans-serif;
   font-size: 20px;
+  font-variant:
   letter-spacing: -.05em;
   color: white;
+  padding: 0px 0px 0px 30px;
+}
+
+#buttonspace {
+  padding: 30px 0px 30px 30px;
 }
 
 #gamebuttons {
   font-family: Futura, sans-serif;
-  font-size: 30px;
-  height: 100px;
-  width: 150px;
+  font-size: 24px;
+  height: 75px;
+  width: 125px;
   letter-spacing: .15em;
+  border-color: none;
+}
+
+.action-again {
+  margin-right: 945px;
 }
 
 #endprompt {
 
+}
+
+#gameplay {
+  background-color: ;
+  height: 500px;
+  width: 1200px;
+  /*background-image: url("");*/
+}
+
+#darthvader {
+  height: 300px;
+  width: 200px;
+}
+
+#scoring {
+  font-family: Futura, sans-serif;
+  font-size: 50px;
+  letter-spacing: .20em;
+  color: white;
+  margin-top: 0px;
+  padding: 30px 0px 30px 30px;
+}
+
+#score {
+
+}
+
+
+#end-screen {
+
+}
+
+/*agents*/
+.player {
+  background-color: red;
+  width: 177px;
+  height: 238px;
+  position: relative;
+  margin: 264px 0px 0px 30px;
+  padding-top:
 }

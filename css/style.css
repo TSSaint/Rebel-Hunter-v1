@@ -1,38 +1,66 @@
 * {
-  margin: auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#game {
+html {
   background-color: black;
+  font-family: Futura, sans-serif;
+  color: white;
+}
+
+/*screens*/
+
+.screen { /*idea is to change game states from start ---> gampleay ---> finish ---> start & gameplay*/
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.screen.active { /*apply to when its active*/
+  display: block;
+}
+
+#gameplay {
+  background: url('../RebelHunterv1/ingamebg.png');
+  background-size: cover;
 }
 
 #start-screen {
-  height: 1000px;
   background: url('../RebelHunterv1/startbg.jpg');
-  background-repeat: no-repeat;
-  background-size: 1260px;
+  background-size: cover;
 }
 
-#game-name {
+#start-screen header {
   padding: 30px 0px 30px 30px;
-  margin-top: 0px;
-  font-size: 50px;
-  letter-spacing: .20em;
-  font-family: Futura, sans-serif;
-  color: white;
-}
-
-#headerblock {
   background-color: black;
   background-size: 1260px;
 }
 
-#prompt {
-  padding: 30px 0px 0px 30px;
+#start-screen header h1 {
+  font-size: 50px;
+  letter-spacing: 0.20em;
+}
+
+#start-screen .content {
+  padding: 30px;
+}
+
+#start-screen .content p {
+  margin-bottom: 30px;
   font-size: 20px;
   letter-spacing: -.05em;
+}
+
+#start-screen .content button {
   font-family: Futura, sans-serif;
-  color: white;
+}
+
+#end-screen {
+  background: url('../RebelHunterv1/endgame.png');
+  background-size: cover;
 }
 
 #buttonspace {
@@ -45,7 +73,6 @@
   border-color: none;
   font-size: 24px;
   letter-spacing: .15em;
-  font-family: Futura, sans-serif;
 }
 
 .action-again {
@@ -56,14 +83,17 @@
 
 }
 
-// #gameplay {
-//   width: 1200px;
-//   height: 500px;
-// }
+/*player*/
 
-#darthvader {
-  width: 200px;
-  height: 300px;
+#darth-vader {
+  position: absolute;
+  width: 177px;
+  height: 238px;
+  background-image: url('../RebelHunterv1/playerVader.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  /*border: 2px solid white;*/
 }
 
 #scoring {
@@ -71,63 +101,38 @@
   margin-top: 0px;
   font-size: 50px;
   letter-spacing: .20em;
-  font-family: Futura, sans-serif;
-  color: white;
 }
 
 #score {
 
 }
 
-#end-screen {
-  background: url('../RebelHunterv1/endgame.png');
-  font-family: Futura, sans-serif;
-  color: white;
-}
-
 #end-note {
   padding: 0px 0px 0px 30px;
-  font-family: Futura, sans-serif;
-  color: white;
 }
 
-// agents
-.gameplay {
-  display: inline-block;
-  width: 300px;
-  height: 300px;
-  border: 1px solid black;
-  background: url('../RebelHunterv1/ingamebg.png');
-  overflow: hidden; // will contain if #first is longer than #second
-}
+/*agents*/
 
-.player {
+.rebel-soldier {
   position: absolute;
-  z-index: 999;
-  width: 177px;
-  height: 238px;
-  margin: 50px 0px 0px 30px;
-  background-color: none;
-  // border: 2px solid white;
-}
-
-.enemy {
-  position: absolute;
-  left: 900px;
   width: 120px;
   height: 190px;
-  margin: 112px 20px 0px 30px;
   background-color: none;
-  // border: 2px solid yellow;
+  background-image: url('../RebelHunterv1/enemyRebel.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  /*border: 2px solid yellow;*/
 }
 
 .bolt {
-  z-index: 1;
-  left: -400px;
   position: absolute;
   width: 100px;
   height: 20px;
-  margin: 125px 0px 0px 30px;
   background-color: none;
-  // border: 2px solid blue;
+  background-image: url('../RebelHunterv1/enemyRebel.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  /*border: 2px solid blue;*/
 }

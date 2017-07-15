@@ -29,9 +29,16 @@
 //   |                                 |                    [.]b       //
 //___|_________________________________|____________________[ ]________//
 
-//constructor ENEMY
-const Enemy = function () { //each one of these enemy has properties holding health,
-  this.health = 100;        //size of hitbox, and position
+// constructor SCORE
+// const Score = function () {
+//   this.score = $('#score');
+// }
+
+var score = $('#score');
+
+// constructor ENEMY
+const Enemy = function () { // each one of these enemy has properties holding health,
+  this.health = 100;        // size of hitbox, and position
   this.hitbox = {
     width: 100,
     height: 100
@@ -41,14 +48,14 @@ const Enemy = function () { //each one of these enemy has properties holding hea
     y: null
   };
 };
-//end
+// end
 
 Enemy.prototype.shoot = function () {
 
 };
 
-//constructor PLAYER
-const Player = function () { //holds instance of Darth Vader
+// constructor PLAYER
+const Player = function () { // holds instance of Darth Vader
   this.health = 100;
   this.hitbox = {
     width: 100,
@@ -61,18 +68,18 @@ const Player = function () { //holds instance of Darth Vader
 };
 
 Player.prototype.addListeners = function () {
-  $(document).keypress(function (event) { //whenever user clicks these, do it
+  $(document).keypress(function (event) { // whenever user clicks these, do it
     if (event.which === 32) {
-      //spacebar
+      // spacebar
       this.block();
     } else if (event.which === 49) {
-      //1
+      // 1
       this.attack();
     } else if (event.which === 37) {
-      //left
+      // left
       this.moveLeft();
     } else if (event.which === 38) {
-      //right
+      // right
       this.moveRight();
     }
   });
@@ -94,9 +101,9 @@ Player.prototype.moveRight = function () {
   // $('player').
 };
 
-//end
+// end
 
-//constructor GAME
+// constructor GAME
 const Game = function () {
   this.score = 0;     //add this. -- and = Num;
   this.enemies = [];  //add this. -- and = [];
@@ -121,42 +128,46 @@ Game.prototype.die = function () {
 
 const game = new Game();
 game.addListeners();
-//end
-console.log('use the force');
+// end
 
-//background
+// background
 
-//movement of PLAYER && ATTACKS
-//can move RIGHT AND LEFT
-//can BLOCK
-//can ATTACK
-//advanced goals: can THROW LIGHTSABER "3" ---> KILLS ALL ENEMIES ON FIELD in RADIUS of BLADE
-              //: can FORCE CRUSH "5" ---> KILLS ALL ENEMIES/LASERBEAMS ON FIELD, stops spawns for 5 seconds
+// movement of PLAYER && ATTACKS
+// can move RIGHT AND LEFT
+// can BLOCK
+// can ATTACK
+// advanced goals: can THROW LIGHTSABER "3" ---> KILLS ALL ENEMIES ON FIELD in RADIUS of BLADE
+              // : can FORCE CRUSH "5" ---> KILLS ALL ENEMIES/LASERBEAMS ON FIELD, stops spawns for 5 seconds
               //  (cont.) and get points for each spawn blocked,
 
-//movement of ENEMY
-const player = 160;
+// movement of ENEMY
+const player = 90;
 
 var enemy = 900;
 setInterval (() => {
-  enemy -= 10;
+  enemy -= 20;
   $('.enemy').css('left', `${enemy}px`);
-  if (enemy === player) {
-  alert('Do something here');
+  if (enemy === player) { // collision detection
+    // alert('It`s Vader!');
+    enemy = -enemy; // "die when touch"
   }
-}, 10);
+}, 200);
 
 // if ($'.enemy'.pos = 800) {
 //   console.log('you get hurt');
-//   REMOVE SCORE
+//   // REMOVE SCORE
 // };
 
-//movement of BLASTERBOLT
+// movement of BOLT
 var bolt = 900;
 setInterval (() => {
-  bolt -= 15;
-  $('.laserBeam').css('left', `${bolt}px`);
-}, 2)
+  bolt -= 10;
+  $('.bolt').css('left', `${bolt}px`);
+  if (bolt === player) { // collision detection
+    // alert('Pew pew (Deflect)');
+    bolt = -bolt; // "disappate when touch"
+  }
+}, 30)
 
 // if bolt position
 
@@ -174,7 +185,7 @@ setInterval (() => {
 //   REMOVE SCORE
 // };
 
-//collision detection
+// collision detection
 // if (player.position = {100px, 100px})
 // if (enemy.position - {100px, 100px})
 // COLLISION!!! ->//   ENEMY DIE && ADD TO SCORE

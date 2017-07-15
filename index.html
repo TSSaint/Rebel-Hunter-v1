@@ -4,33 +4,35 @@
   <meta charset="utf-8">
   <title>Rebel Hunter</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/jquery.js"></script>
-  <script src="js/main.js"></script>
 </head>
 <body>
   <div id="game">
-    <section id="start-screen">
-      <header id="headerblock">
-        <h1 id="game-name">REBEL HUNTER</h1>
+    <section id="start-screen" class="screen active">
+      <header>
+        <h1>REBEL HUNTER</h1>
       </header>
-      <p id="prompt">THE REBELS ARE ATTEMPTING TO ESCAPE FROM THE CORRIDOR. ELIMINATE THEM.</p>
-      <div id="buttonspace">
+      <div class="content">
+        <p>THE REBELS ARE ATTEMPTING TO ESCAPE FROM THE CORRIDOR. ELIMINATE THEM.</p>
         <button class="action-begin gamebuttons">start</button>
       </div>
     </section>
-    <section class="gameplay">
-      <div id="darthVader">
-        <img class="player" src="RebelHunterv1/playerVader.png" />
-      </div>
-      <div id="rebelSoldier">
-        <img class="enemy" src="RebelHunterv1/enemyRebel.png" />
-      </div>
-      <div id="laserBeam">
-        <img class="bolt" src="RebelHunterv1/blasterbolt.png" />
-      </div>
-    </section>
+
     <!-- game goes here -->
-    <section id="end-screen">
+    <section id="gameplay" class="screen">
+      <div id="darth-vader"></div>
+      <!-- <img class="player" src="RebelHunterv1/playerVader.png" /> -->
+
+      <div class="rebel-soldier"></div>
+      <div class="rebel-soldier"></div>
+      <div class="rebel-soldier"></div>
+      <div class="rebel-soldier"></div>
+      <!-- <img class="enemy" src="RebelHunterv1/enemyRebel.png" /> -->
+
+      <div class="bolt"></div>
+      <!-- <img class="bolt" src="RebelHunterv1/blasterbolt.png" /> -->
+    </section>
+
+    <section id="end-screen" class="screen">
       <h1 id="scoring">SCORE: <span id="score"></span>(increment/decrement)</h1>
       <p id="end-note">(say something according to score number)</p>
       <div id="buttonspace">
@@ -39,5 +41,8 @@
       </div>
     </section>
   </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -29,6 +29,20 @@
 //   |                                 |                    [.]b       //
 //___|_________________________________|____________________[ ]________//
 
+// change GAME STATES --- STARt --- GAME ---- END/REPLAY
+function beginGame() {
+  // let gameStart = $(document.querySelector('start-screen').removeClass('active'));
+  $('#start-screen').removeClass('active');
+  $('#gameplay').addClass('active');
+  // gameStart.appendTo('gameplay'); // wrong
+}
+
+$('.action-begin').click(beginGame);
+
+// $('')
+//write function with an event listener onclick to occur when button class="action-begin" is pressedv
+
+
 // constructor SCORE
 // const Score = function () {
 //   this.score = $('#score');
@@ -180,7 +194,7 @@ setInterval (() => {
 //   console.log('Do something here');
 // }
 
-// if ($'.laserbeam'.pos = 800) {
+// if ($'.laser-beam'.pos = 800) {
 //   console.log('you get hurt');
 //   REMOVE SCORE
 // };

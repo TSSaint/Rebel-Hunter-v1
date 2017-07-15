@@ -29,25 +29,6 @@
 //   |                                 |                    [.]b       //
 //___|_________________________________|____________________[ ]________//
 
-// change GAME STATES --- STARt --- GAME ---- END/REPLAY
-function beginGame() {
-  $('#start-screen').removeClass('active');
-  $('#gameplay').addClass('active');
-}
-
-$('.action-begin').click(beginGame);
-
-// $('')
-//write function with an event listener onclick to occur when button class="action-begin" is pressedv
-
-
-// constructor SCORE
-// const Score = function () {
-//   this.score = $('#score');
-// }
-
-var score = $('#score');
-
 // constructor ENEMY
 const Enemy = function () { // each one of these enemy has properties holding health,
   this.health = 100;        // size of hitbox, and position
@@ -123,15 +104,25 @@ const Game = function () {
 };
 
 Game.prototype.addListeners = function () {
-  $('.action-begin').click(function (event) {
-    /* Act on the event */
-    this.start(); //doesn't refer to Game constructor. instead, refers to the button
-  }).bind(this); //makes refer to Game!!!!!!!111111!!
-};
+  $('.action-begin').click(function () {
+    $('#start-screen').removeClass('active');
+    $('#gameplay').addClass('active');
+  });
 
-Game.prototype.start = function () { //turn into X.prototype.FUNCTION = function () {};
-  var enemy = new Enemy(); //creates new bad guys!!!!
-  this.enemies.push(enemy); //looks at Game constructor, and calls 1 new bad guy
+  // startbutton only
+  $('.action-again').click(function () {
+    $('#end-screen').removeClass('active');
+    $('#gameplay').addClass('active');
+  });
+
+  // replay/again button only
+  $('.action-main').click(function () {
+    $('#start-screen').removeClass('active');
+    $('#start-screen').addClass('active');
+    // returnto main screen button only
+    var enemy = new Enemy(); // creates new bad guys!!!!
+    this.enemies.push(enemy); // looks at Game constructor, and calls 1 new bad guy
+  });
 };
 
 Game.prototype.die = function () {

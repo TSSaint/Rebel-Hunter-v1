@@ -31,10 +31,8 @@
 
 // change GAME STATES --- STARt --- GAME ---- END/REPLAY
 function beginGame() {
-  // let gameStart = $(document.querySelector('start-screen').removeClass('active'));
   $('#start-screen').removeClass('active');
   $('#gameplay').addClass('active');
-  // gameStart.appendTo('gameplay'); // wrong
 }
 
 $('.action-begin').click(beginGame);

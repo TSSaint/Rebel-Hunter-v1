@@ -29,49 +29,71 @@
 //   |                                 |                    [.]b       //
 //___|_________________________________|____________________[ ]________//
 
+function getRandomInt(min, max) { // >>>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
 // constructor ENEMY
 const Enemy = function () { // each one of these enemy has properties holding health,
+  this.element = null;
   this.health = 100;        // size of hitbox, and position
   this.hitbox = {
     width: 100,
     height: 100
   };
   this.position = {
-    x: null,
-    y: null
+    x: 1080
   };
+
+  this.create();
+  this.move();
 };
-// end
 
-Enemy.prototype.shoot = function () {
+Enemy.prototype.create = function () {
+  $('.rebel-holder').append('<div class="rebel-soldier"></div>');
+  this.element = $('.rebel-soldier').last();
+};
 
+Enemy.prototype.move = function () {
+  setInterval (() => {
+    this.position.x -= 20;
+    this.element.css('left', this.position.x + 'px');
+    // if (enemy === player) { // collision detection
+    //   // alert('It`s Vader!');
+    //   enemy = -enemy; // "die when touch"
+    // }
+  }, 200);
 };
 
 // constructor PLAYER
 const Player = function () { // holds instance of Darth Vader
+  this.element = $('#darth-vader');
   this.health = 100;
   this.hitbox = {
     width: 100,
     height: 100
   };
   this.position = {
-    x: null,
-    y: null
+    x: 0
   };
+
+  this.addListeners();
 };
 
 Player.prototype.addListeners = function () {
-  $(document).keypress(function (event) { // whenever user clicks these, do it
+  $(document).on('keypress', (event) => { // whenever user clicks these, do it
     if (event.which === 32) {
       // spacebar
       this.block();
     } else if (event.which === 49) {
       // 1
       this.attack();
-    } else if (event.which === 37) {
+    } else if (event.which === 97) {
       // left
       this.moveLeft();
-    } else if (event.which === 38) {
+    } else if (event.which === 100) {
       // right
       this.moveRight();
     }
@@ -87,41 +109,51 @@ Player.prototype.block = function () {
 };
 
 Player.prototype.moveLeft = function () {
-  // $('player').
+  this.position.x -= 40;
+  this.element.css('left', this.position.x + 'px');
 };
 
 Player.prototype.moveRight = function () {
-  // $('player').
+  this.position.x += 40;
+  this.element.css('left', this.position.x + 'px');
 };
-
 // end
 
 // constructor GAME
 const Game = function () {
-  this.score = 0;     //add this. -- and = Num;
-  this.enemies = [];  //add this. -- and = [];
+  this.score = 0;     // add this. -- and = Num;
+  this.enemies = [];  // add this. -- and = [];
   this.player = new Player();
+
+  this.addListeners();
 };
 
+Game.prototype.start = function () {
+  this.createEnemy();
+};
+
+Game.prototype.createEnemy = function () {
+  var enemy = new Enemy(); // creates new bad guys!!!!
+  this.enemies.push(enemy); // looks at Game constructor, and calls 1 new bad guy
+
+  let randomTime = getRandomInt(1000, 5000);
+  setTimeout(() => {
+    this.createEnemy();
+  }, randomTime); // >>>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#Recursion
+};
+
+// player start and replay buttons set here
 Game.prototype.addListeners = function () {
-  $('.action-begin').click(function () {
-    $('#start-screen').removeClass('active');
-    $('#gameplay').addClass('active');
+  $('.action-begin, .action-again').click(() => {
+    $('.screen').removeClass('active');
+    $('#game-screen').addClass('active');
+    this.start();
   });
 
-  // startbutton only
-  $('.action-again').click(function () {
-    $('#end-screen').removeClass('active');
-    $('#gameplay').addClass('active');
-  });
-
-  // replay/again button only
+  // replay button only
   $('.action-main').click(function () {
-    $('#start-screen').removeClass('active');
+    $('.screen').removeClass('active');
     $('#start-screen').addClass('active');
-    // returnto main screen button only
-    var enemy = new Enemy(); // creates new bad guys!!!!
-    this.enemies.push(enemy); // looks at Game constructor, and calls 1 new bad guy
   });
 };
 
@@ -130,7 +162,6 @@ Game.prototype.die = function () {
 };
 
 const game = new Game();
-game.addListeners();
 // end
 
 // background
@@ -144,17 +175,7 @@ game.addListeners();
               //  (cont.) and get points for each spawn blocked,
 
 // movement of ENEMY
-const player = 90;
 
-var enemy = 900;
-setInterval (() => {
-  enemy -= 20;
-  $('.enemy').css('left', `${enemy}px`);
-  if (enemy === player) { // collision detection
-    // alert('It`s Vader!');
-    enemy = -enemy; // "die when touch"
-  }
-}, 200);
 
 // if ($'.enemy'.pos = 800) {
 //   console.log('you get hurt');
@@ -162,15 +183,15 @@ setInterval (() => {
 // };
 
 // movement of BOLT
-var bolt = 900;
-setInterval (() => {
-  bolt -= 10;
-  $('.bolt').css('left', `${bolt}px`);
-  if (bolt === player) { // collision detection
-    // alert('Pew pew (Deflect)');
-    bolt = -bolt; // "disappate when touch"
-  }
-}, 30)
+// var bolt = 900;
+// setInterval (() => {
+//   bolt -= 10;
+//   $('.bolt').css('left', `${bolt}px`);
+//   if (bolt === player) { // collision detection
+//     // alert('Pew pew (Deflect)');
+//     bolt = -bolt; // "disappate when touch"
+//   }
+// }, 30)
 
 // if bolt position
 

@@ -23,11 +23,6 @@ html {
   display: block;
 }
 
-#gameplay {
-  background: url('../RebelHunterv1/ingamebg.png');
-  background-size: cover;
-}
-
 #start-screen {
   background: url('../RebelHunterv1/startbg.jpg');
   background-size: cover;
@@ -63,6 +58,17 @@ html {
   background-size: cover;
 }
 
+#game-area {
+  position: relative;
+  width: 1080px;
+  height: 768px;
+  margin: 0 auto;
+  border: 1px solid red;
+  background: url('../RebelHunterv1/ingamebg.png');
+  background-size: cover;
+  overflow: hidden;
+}
+
 #buttonspace {
   padding: 30px 0px 30px 30px;
 }
@@ -87,6 +93,8 @@ html {
 
 #darth-vader {
   position: absolute;
+  left: 0;
+  bottom: 160px;
   width: 177px;
   height: 238px;
   background-image: url('../RebelHunterv1/playerVader.png');
@@ -115,6 +123,8 @@ html {
 
 .rebel-soldier {
   position: absolute;
+  left: 1080px;
+  bottom: 160px;
   width: 120px;
   height: 190px;
   background-color: none;

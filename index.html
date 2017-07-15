@@ -7,7 +7,7 @@
 </head>
 <body>
   <div id="game">
-    <section id="start-screen" class="screen">
+    <section id="start-screen" class="screen active">
       <header>
         <h1>REBEL HUNTER</h1>
       </header>
@@ -18,21 +18,22 @@
     </section>
 
     <!-- game goes here -->
-    <section id="gameplay" class="screen">
-      <div id="darth-vader"></div>
-      <!-- <img class="player" src="RebelHunterv1/playerVader.png" /> -->
+    <section id="game-screen" class="screen active">
+      <div id="game-area">
+        <div id="darth-vader"></div>
+        <!-- <img class="player" src="RebelHunterv1/playerVader.png" /> -->
 
-      <div class="rebel-soldier"></div>
-      <div class="rebel-soldier"></div>
-      <div class="rebel-soldier"></div>
-      <div class="rebel-soldier"></div>
-      <!-- <img class="enemy" src="RebelHunterv1/enemyRebel.png" /> -->
+        <div class="rebel-holder"></div>
+        <!-- <img class="enemy" src="RebelHunterv1/enemyRebel.png" /> -->
 
-      <div class="bolt"></div>
-      <!-- <img class="bolt" src="RebelHunterv1/blasterbolt.png" /> -->
+        <div class="bold-holder">
+          <div class="bolt"></div>
+        </div>
+        <!-- <img class="bolt" src="RebelHunterv1/blasterbolt.png" /> -->
+      </div>
     </section>
 
-    <section id="end-screen" class="screen active">
+    <section id="end-screen" class="screen">
       <h1 id="scoring">SCORE: <span id="score"></span>(increment/decrement)</h1>
       <p id="end-note">(say something according to score number)</p>
       <div id="buttonspace">

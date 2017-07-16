@@ -9,6 +9,8 @@ html {
   font-family: Futura, sans-serif;
   color: white;
 }
+/*cursor*/
+
 
 /*screens*/
 
@@ -24,7 +26,7 @@ html {
 }
 
 #start-screen {
-  background: url('../RebelHunterv1/startbg.jpg');
+  background: url('../RebelHunterv1/VADERstrt.gif'); /*always start with this*/
   background-size: cover;
 }
 
@@ -54,7 +56,7 @@ html {
 }
 
 #end-screen {
-  background: url('../RebelHunterv1/endgame.png');
+  background: url('../RebelHunterv1/VADER.gif');
   background-size: cover;
 }
 
@@ -67,6 +69,22 @@ html {
   background: url('../RebelHunterv1/ingamebg.png');
   background-size: cover;
   overflow: hidden;
+}
+
+#game-score {
+  position: absolute;
+  z-index: 1000;
+  top: 50px;
+  left: 20px;
+  font-size: 20px;
+}
+
+#game-health {
+  position: absolute;
+  z-index: 1000;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
 }
 
 #buttonspace {
@@ -93,6 +111,7 @@ html {
 
 #darth-vader {
   position: absolute;
+  z-index: 100;
   left: 0;
   bottom: 160px;
   width: 177px;
@@ -123,6 +142,7 @@ html {
 
 .rebel-soldier {
   position: absolute;
+  z-index: 50;
   left: 1080px;
   bottom: 160px;
   width: 120px;
@@ -137,10 +157,13 @@ html {
 
 .bolt {
   position: absolute;
+  z-index: 10;
+  left: 1080px;
+  bottom: 306px;
   width: 100px;
   height: 20px;
   background-color: none;
-  background-image: url('../RebelHunterv1/enemyRebel.png');
+  background-image: url('../RebelHunterv1/blasterbolt.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;

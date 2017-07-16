@@ -20,13 +20,15 @@
     <!-- game goes here -->
     <section id="game-screen" class="screen active">
       <div id="game-area">
+        <div id="game-score">SCORE: <span>0</span></div>
+        <div id="game-health">HEALTH: <span>100</span></div>
         <div id="darth-vader"></div>
         <!-- <img class="player" src="RebelHunterv1/playerVader.png" /> -->
 
         <div class="rebel-holder"></div>
         <!-- <img class="enemy" src="RebelHunterv1/enemyRebel.png" /> -->
 
-        <div class="bold-holder">
+        <div class="bolt-holder">
           <div class="bolt"></div>
         </div>
         <!-- <img class="bolt" src="RebelHunterv1/blasterbolt.png" /> -->
@@ -34,8 +36,8 @@
     </section>
 
     <section id="end-screen" class="screen">
-      <h1 id="scoring">SCORE: <span id="score"></span>(increment/decrement)</h1>
-      <p id="end-note">(say something according to score number)</p>
+      <h1 id="scoring">SCORE: <span id="game-score"></span></h1>
+      <p id="end-note">Impressive. Most impressive.</p>
       <div id="buttonspace">
         <button class="action-again gamebuttons">AGAIN</button>
         <button class="action-main gamebuttons">MAIN</button>

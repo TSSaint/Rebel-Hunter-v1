@@ -39,13 +39,10 @@ function getRandomInt(min, max) { // >>>https://developer.mozilla.org/en-US/docs
 const Enemy = function () { // each one of these enemy has properties holding health,
   this.element = null;
   this.health = 100;        // size of hitbox, and position
-  this.hitbox = {
-    width: 100,
-    height: 100
-  };
   this.position = {
     x: 1080
   };
+  this.intervalId = null;
 
   this.create();
   this.move();
@@ -57,65 +54,69 @@ Enemy.prototype.create = function () {
 };
 
 Enemy.prototype.move = function () {
-  setInterval (() => {
+  this.intervalId = setInterval (() => {
     this.position.x -= 20;
     this.element.css('left', this.position.x + 'px');
-    // if (enemy === player) { // collision detection
-    //   // alert('It`s Vader!');
-    //   enemy = -enemy; // "die when touch"
-    // }
   }, 200);
+};
+
+Enemy.prototype.die = function () {
+  // >>>https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval
+  clearInterval(this.intervalId); // stop moving
+  this.element.remove();
+};
+
+//constructor BOLT
+const Bolt = function () { // each one of these enemy has properties holding health,
+  this.element = null;
+  this.position = {
+    x: 1080
+  };
+  this.intervalId = null;
+
+  this.create();
+  this.move();
+};
+
+Bolt.prototype.create = function () {
+  $('.bolt-holder').append('<div class="bolt"></div>');
+  this.element = $('.bolt').last();
+};
+
+Bolt.prototype.move = function () {
+  this.intervalId = setInterval (() => {
+    this.position.x -= 5;
+    this.element.css('left', this.position.x + 'px');
+  }, 10);
+};
+
+Bolt.prototype.die = function () {
+  // >>>https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval
+  clearInterval(this.intervalId); // stop moving
+  this.element.remove();
 };
 
 // constructor PLAYER
 const Player = function () { // holds instance of Darth Vader
   this.element = $('#darth-vader');
   this.health = 100;
-  this.hitbox = {
-    width: 100,
-    height: 100
-  };
   this.position = {
     x: 0
   };
-
-  this.addListeners();
-};
-
-Player.prototype.addListeners = function () {
-  $(document).on('keypress', (event) => { // whenever user clicks these, do it
-    if (event.which === 32) {
-      // spacebar
-      this.block();
-    } else if (event.which === 49) {
-      // 1
-      this.attack();
-    } else if (event.which === 97) {
-      // left
-      this.moveLeft();
-    } else if (event.which === 100) {
-      // right
-      this.moveRight();
-    }
-  });
-};
-
-Player.prototype.attack = function () {
-  // $('player').
-};
-
-Player.prototype.block = function () {
-  // $('player').
 };
 
 Player.prototype.moveLeft = function () {
-  this.position.x -= 40;
-  this.element.css('left', this.position.x + 'px');
+  if (this.position.x > 0) { // stop vader from going LEFT off screen
+    this.position.x -= 30;
+    this.element.css('left', this.position.x + 'px');
+  }
 };
 
 Player.prototype.moveRight = function () {
-  this.position.x += 40;
-  this.element.css('left', this.position.x + 'px');
+  if (this.position.x < 903) { // stop vader from going RIGHT off screen
+    this.position.x += 30;
+    this.element.css('left', this.position.x + 'px');
+  }
 };
 // end
 
@@ -123,23 +124,10 @@ Player.prototype.moveRight = function () {
 const Game = function () {
   this.score = 0;     // add this. -- and = Num;
   this.enemies = [];  // add this. -- and = [];
+  this.bolts = [];
   this.player = new Player();
-
   this.addListeners();
-};
-
-Game.prototype.start = function () {
-  this.createEnemy();
-};
-
-Game.prototype.createEnemy = function () {
-  var enemy = new Enemy(); // creates new bad guys!!!!
-  this.enemies.push(enemy); // looks at Game constructor, and calls 1 new bad guy
-
-  let randomTime = getRandomInt(1000, 5000);
-  setTimeout(() => {
-    this.createEnemy();
-  }, randomTime); // >>>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#Recursion
+  this.listenForBolts();
 };
 
 // player start and replay buttons set here
@@ -155,10 +143,121 @@ Game.prototype.addListeners = function () {
     $('.screen').removeClass('active');
     $('#start-screen').addClass('active');
   });
+
+  $(document).on('keypress', (event) => { // whenever user clicks these, do it
+    if (event.which === 32) {
+      // spacebar
+      this.playerAttacks();
+    } else if (event.which === 49) {
+      // 1
+      this.playerBlocks();
+    } else if (event.which === 97) {
+      // left
+      this.player.moveLeft();
+    } else if (event.which === 100) {
+      // right
+      this.player.moveRight();
+    }
+  });
 };
 
-Game.prototype.die = function () {
-  this.player.remove(Player)
+Game.prototype.listenForBolts = function () {
+  const boltWidth = 100;
+  const vaderWidth = 177;
+  setInterval(() => {
+    let vaderA = this.player.position.x;
+    let vaderB = vaderA + vaderWidth;
+    for (var i = 0; i < this.bolts.length; i++) {
+      let boltA = this.bolts[i].position.x;
+      let boltB = boltA + boltWidth;
+      let isVaderAWithinBolt = vaderA >= boltA && vaderA <= boltB;
+      let isVaderBWithinBolt = vaderB >= boltA && vaderB <= boltB;
+      if (isVaderAWithinBolt || isVaderBWithinBolt ) { // if collision
+        this.bolts[i].die();
+        this.bolts.splice(i, 1);
+        this.subtractHealth(10);
+      }
+    }
+  }, 250);
+};
+
+Game.prototype.playerAttacks = function () {
+  const enemyWidth = 120;
+  const vaderWidth = 177;
+  const hitboxWidth = 40;
+  let hitboxA = this.player.position.x + vaderWidth;
+  let hitboxB = hitboxA + hitboxWidth;
+  for (var i = 0; i < this.enemies.length; i++) {
+    let enemyA = this.enemies[i].position.x;
+    let enemyB = enemyA + enemyWidth;
+    let isHitboxAWithinEnemy = hitboxA >= enemyA && hitboxA <= enemyB;
+    let isHitboxBWithinEnemy = hitboxB >= enemyA && hitboxB <= enemyB;
+    if (isHitboxAWithinEnemy || isHitboxBWithinEnemy ) { // if collision
+      this.enemies[i].die();
+      this.enemies.splice(i, 1); // https://stackoverflow.com/questions/5767325/how-do-i-remove-a-particular-element-from-an-array-in-javascript
+      this.addToScore(500);
+    }
+  }
+  // >>> LETS ADD: https://stackoverflow.com/questions/14290424/game-programming-how-to-add-delay-between-attacks
+};
+
+Game.prototype.playerBlocks = function () {
+  const boltWidth = 100;
+  const vaderWidth = 177;
+  const hitboxWidth = 40;
+  let hitboxA = this.player.position.x + vaderWidth;
+  let hitboxB = hitboxA + hitboxWidth;
+  for (var i = 0; i < this.bolts.length; i++) {
+    let boltA = this.bolts[i].position.x;
+    let boltB = boltA + boltWidth;
+    let isHitboxAWithinBolt = hitboxA >= boltA && hitboxA <= boltB;
+    let isHitboxBWithinBolt = hitboxB >= boltA && hitboxB <= boltB;
+    if (isHitboxAWithinBolt || isHitboxBWithinBolt ) { // if collision
+      this.bolts[i].die();
+      this.bolts.splice(i, 1);
+      this.addToScore(100);
+    }
+  }
+  // >>> LETS ADD: https://stackoverflow.com/questions/14290424/game-programming-how-to-add-delay-between-attacks
+};
+
+Game.prototype.addToScore = function (points) {
+  this.score += points;
+  $('#game-score span').text(this.score);
+};
+
+Game.prototype.subtractHealth = function (damage) {
+  this.player.health -= damage;
+  $('#game-health span').text(this.player.health);
+  if (this.player.health <= 0) {
+    $('.screen').removeClass('active');
+    $('#end-screen').addClass('active');
+  }
+};
+
+Game.prototype.start = function () {
+  this.createEnemy();
+  this.createBolt();
+};
+
+Game.prototype.createEnemy = function () {
+  var enemy = new Enemy(); // creates new bad guys!!!!
+  this.enemies.push(enemy); // looks at Game constructor, and calls 1 new bad guy
+
+  let randomTime = getRandomInt(500, 5000);
+  setTimeout(() => {
+    this.createEnemy();
+  }, randomTime); // >>>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#Recursion
+};
+
+Game.prototype.createBolt = function () {
+  var bolt = new Bolt(); // creates new bad guys!!!!
+  this.bolts.push(bolt); // looks at Game constructor, and calls 1 new bad guy
+
+  let randomTime = getRandomInt(500, 2000);
+  setTimeout(() => {
+    this.createBolt();
+  }, randomTime); // >>>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#Recursion
 };
 
 const game = new Game();
@@ -166,15 +265,25 @@ const game = new Game();
 
 // background
 
-// movement of PLAYER && ATTACKS
+// movement of PLAYER
 // can move RIGHT AND LEFT
 // can BLOCK
 // can ATTACK
 // advanced goals: can THROW LIGHTSABER "3" ---> KILLS ALL ENEMIES ON FIELD in RADIUS of BLADE
               // : can FORCE CRUSH "5" ---> KILLS ALL ENEMIES/LASERBEAMS ON FIELD, stops spawns for 5 seconds
               //  (cont.) and get points for each spawn blocked,
+              // pause/ingame menu
+              // add sounds/SFX for saber throw, crush, etc.
+              // improved playability
 
 // movement of ENEMY
+// enemy DIE
+
+// add SCORE when kill ENEMY
+// add SCORE when block BOLT
+// lose HEALTH when ENEMY COLLIDE
+
+//
 
 
 // if ($'.enemy'.pos = 800) {

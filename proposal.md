@@ -1,5 +1,6 @@
 # Rebel-Hunter-v1
 Darth Vader/Star Wars based mini-game using HTML/CSS/JQuery
+Play the GAME: http://rebelhunterv1.bitballoon.com/
 
 *** Tom Santos / 7/11/17 ***
 

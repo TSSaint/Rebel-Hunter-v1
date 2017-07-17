@@ -18,7 +18,7 @@
     </section>
 
     <!-- game goes here -->
-    <section id="game-screen" class="screen active">
+    <section id="game-screen" class="screen">
       <div id="game-area">
         <div id="game-score">SCORE: <span>0</span></div>
         <div id="game-health">HEALTH: <span>100</span></div>
@@ -36,15 +36,24 @@
     </section>
 
     <section id="end-screen" class="screen">
-      <h1 id="scoring">SCORE: <span id="game-score"></span></h1>
+      <!-- <h1 id="scoring">SCORE: <span id="game-score-end">0</span></h1> -->
+      <!-- Will add a more proper way to congratulate user on performance after scoring 3000pts. or more display score and relevant phrase depending on points -->
       <p id="end-note">Impressive. Most impressive.</p>
       <div id="buttonspace">
-        <button class="action-again gamebuttons">AGAIN</button>
-        <button class="action-main gamebuttons">MAIN</button>
+        <button class="action-again gamebuttons">again</button>
+        <button class="action-main gamebuttons">main</button>
       </div>
     </section>
+    <!-- <section id="failure-screen" class="screen">
+      <h1 id="scoring">SCORE: <span id="game-score-end">0</span></h1>
+      Pops up if user scores less than 3000pts.
+      <p id="end-note">Failure is unacceptable.</p>
+      <div id="buttonspace">
+        <button class="action-again gamebuttons">again</button>
+        <button class="action-main gamebuttons">main</button>
+      </div>
+    </section> -->
   </div>
-
   <script src="js/jquery.js"></script>
   <script src="js/main.js"></script>
 </body>

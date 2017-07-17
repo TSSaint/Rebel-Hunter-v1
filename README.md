@@ -1,6 +1,6 @@
 # Rebel Hunter
 
-![](./rebelhunterv1/openingshot.jpg)
+![](./RebelHunterv1/openingshot.jpg)
 
 ## What is Rebel Hunter?
 

@@ -4,7 +4,12 @@
 
 ## What is Rebel Hunter?
 
-> Rebel Hunter is a single player, 1D side scroller where users play as Darth Vader to eliminate rebel forces as they try to escape before their energy/depletes to 0. The game is not designed to have a clear win-lose scenario. It is more of a rhythm/survival game. A user can block incoming blaster bolts and kill enemy agents in order to rack up points, whilst trying to last as long as possible.
+> Rebel Hunter is a single player, 1D side scroller where users play as Darth Vader to eliminate rebel forces as they try to escape before their energy/depletes to 0. The game is not designed to have a clear win-lose scenario. It is more of a rhythm/survival game. 
+
+1 = BLOCK. SPACEBAR = ATTACK.
+1 defends against blaster bolts.
+Spacebar eliminates rebels.
+A user can block incoming blaster bolts and kill enemy agents in order to rack up points, whilst trying to last as long as possible.
 
 ## Technical Discussion
 

@@ -21,16 +21,16 @@ A user can block incoming blaster bolts and kill enemy agents in order to rack u
 
 ## The Making of Rebel Hunter
 
-> I used a combination of syntax/style guides provided by the instructors in Unit 1, stackoverflow/MDN/w3 school references easily available online (referenced in the javascript comments) to help guide the design process and figure out the best way to solve problems. The result was almost totally revising my initial approach to create this game.
+> I used a combination of syntax/style guides provided in stackoverflow/MDN/w3 school references easily available online (referenced in the javascript comments) to help guide the design process and figure out the best way to solve problems. The result was almost totally revising my initial approach to create this game.
 
 ## Opportunities for Future Growth
 
-> Without a doubt, I would add the following features to the game if I knew how to implement it fast enough/had incentive to:
-	- Add complex character animations (movement, shooting, death, etc.)
-	- Add several new attacks, like throw lightsaber, force crush, and GodMode
-	- Congratulate user on performance (3k points or more special ending message)
-	- Add high-scores
-	- Add pause menu
-	- Add music and sounds to add to the Star Wars experience
-	- Add different kinds of enemies
-	- Add different kinds of maps/locations
+> Without a doubt, I would add the following features to the game if I knew how to implement it fast enough/had incentive to:<br>
+	- Add complex character animations (movement, shooting, death, etc.)<br>
+	- Add several new attacks, like throw lightsaber, force crush, and GodMode<br>
+	- Congratulate user on performance (3k points or more special ending message)<br>
+	- Add high-scores<br>
+	- Add pause menu<br>
+	- Add music and sounds to add to the Star Wars experience<br>
+	- Add different kinds of enemies<br>
+	- Add different kinds of maps/locations<br>
